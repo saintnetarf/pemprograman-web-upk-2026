@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kontak</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h1>Hubungi Saya</h1>
+<form action="terima.php" method="get">
+  <p>
+    <label for="nama">Nama lengkap</label><br>
+    <input type="text" id="nama" name="nama" required>
+  </p>
+  <p>
+    <label for="email">Email</label><br>
+    <input type="email" id="email" name="email" required>
+  </p>
+  <p>
+    <label for="tgl">Tanggal lahir</label><br>
+    <input type="date" id="tgl" name="tgl">
+  </p>
+  <fieldset>
+    <legend>Jenis pesan</legend>
+    <label><input type="radio" name="jenis" value="saran"> Saran</label>
+    <label><input type="radio" name="jenis" value="tanya"> Pertanyaan</label>
+  </fieldset>
+  <p>
+    <label for="prodi">Program studi</label><br>
+    <select id="prodi" name="prodi">
+      <option value="si">Sistem Informasi</option>
+      <option value="ti">Teknik Informatika</option>
+      <option value="pti">Pendidikan Teknologi Informasi</option>
+    </select>
+  </p>
+  <p>
+    <label for="pesan">Pesan</label><br>
+    <textarea id="pesan" name="pesan" rows="8" cols="40"></textarea>
+  </p>
+  <p><label><input type="checkbox" name="setuju" value="ya" required> Saya menyetujui pengiriman data</label></p>
+  <p><label><input type="checkbox" name="setuju" value="ya" required> Saya menyetujui data yang di input benar</label></p>
+  
+  <button type="submit">Kirim</button>
+</form>
+
+</body>
+</html>

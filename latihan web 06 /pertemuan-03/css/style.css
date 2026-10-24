@@ -1,0 +1,115 @@
+:root {
+  --warna-utama: #0e7c86;
+  --warna-gelap: #10243e;
+  --warna-latar: #ec8787;
+  --garis: #d9e2e8;
+}
+ 
+* { box-sizing: border-box; }
+ 
+body {
+  margin: 0;
+  font-family: "Franklin Gothic Medium, Arial Narrow, Arial";
+  line-height: 1.6;
+  color: #1f2933;
+  background: var(--warna-latar);
+}
+ 
+h1, h2, h3 { color: var(--warna-gelap); line-height: 1.25; }
+a { color: var(--warna-utama); }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; height: auto; }
+
+header {
+  background: var(--warna-gelap);
+  color: #fff;
+  padding: 1.5rem 1rem;
+}
+header h1 { color: #fff; margin: 0 0 .5rem; }
+ 
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+ 
+section {
+  background: #fff;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--garis);
+  border-radius: 12px;
+}
+ 
+.foto-profil {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--warna-utama);
+}
+ 
+header {
+  background: var(--warna-gelap);
+  color: #fff;
+  padding: 1.5rem 1rem;
+}
+header h1 { color: #fff; margin: 0 0 .5rem; }
+ 
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+ 
+section {
+  background: #fff;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--garis);
+  border-radius: 12px;
+}
+ 
+.foto-profil {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--warna-utama);
+}
+ 
+footer { text-align: center; padding: 1rem; color: #5b6770; }
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: .4rem .8rem;
+  border-radius: 6px;
+}
+nav a:hover,
+nav a[aria-current="page"] {
+  background: var(--warna-utama);
+}
+
+.grid-kartu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.kartu {
+  background: var(--warna-latar);
+  border: 1px solid var(--garis);
+  border-radius: 12px;
+  padding: 1rem;
+  transition: transform .2s, box-shadow .2s;
+}
+.kartu:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(16, 36, 62, .12);
+}
+
