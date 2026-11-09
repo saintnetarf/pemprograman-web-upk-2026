@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hitung Nilai Akhir</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+
+  <header>
+    <h1>Kalkulator Nilai</h1>
+    <nav>
+      <a href="index.html">Beranda</a>
+      <a href="jadwal.html">Jadwal</a>
+      <a href="nilai.html" aria-current="page">Nilai</a>
+      <a href="es6.html">ES6</a>
+      <a href="proyek.html">Proyek</a>
+      <a href="pengguna.html">Pengguna</a>
+      <a href="alpine.html">Alpine</a>
+      <a href="kontak.html">Kontak</a>
+    </nav>
+    <button id="tombol-tema" type="button">Mode gelap</button>
+  </header>
+
+  <main>
+    <section>
+      <h2>Hitung Nilai Akhir</h2>
+      <form id="form-nilai">
+        <p>
+          <label for="tugas">Nilai tugas (0&ndash;100)</label><br>
+          <input type="number" id="tugas" min="0" max="100" required>
+        </p>
+        <p>
+          <label for="uts">Nilai UTS (0&ndash;100)</label><br>
+          <input type="number" id="uts" min="0" max="100" required>
+        </p>
+        <p>
+          <label for="uas">Nilai UAS (0&ndash;100)</label><br>
+          <input type="number" id="uas" min="0" max="100" required>
+        </p>
+        <button type="submit">Hitung</button>
+      </form>
+      <p id="hasil" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Ani Lestari</p>
+  </footer>
+
+</body>
+</html>

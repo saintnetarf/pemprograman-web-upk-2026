@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Ani Lestari</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+
+  <header>
+    <h1>Halo, saya Ani Lestari</h1>
+    <p id="salam"></p>
+    <nav>
+      <a href="index.html" aria-current="page">Beranda</a>
+      <a href="jadwal.html">Jadwal</a>
+      <a href="nilai.html">Nilai</a>
+      <a href="kontak.html">Kontak</a>
+    </nav>
+    <button id="tombol-tema" type="button">Mode gelap</button>
+  </header>
+
+  <main>
+    <p><a href="#minat">Lompat ke Minat</a></p>
+
+    <section class="profil">
+      <img class="foto-profil" src="img/foto.jpg" alt="Foto Ani Lestari">
+      <div>
+        <h2>Tentang Saya</h2>
+        <p>
+          Saya mahasiswa <strong>Program Studi Sistem Informasi</strong>, NIM 2026010001.
+          Saya <em>tertarik</em> pada pengembangan web.
+        </p>
+      </div>
+    </section>
+
+    <section id="minat">
+      <h2>Minat</h2>
+      <ul id="daftar-minat">
+        <li>Pemrograman web</li>
+        <li>Basis data</li>
+        <li>Desain antarmuka</li>
+      </ul>
+      <form id="form-minat">
+        <label for="minat-baru">Tambah minat</label>
+        <input type="text" id="minat-baru">
+        <button type="submit">Tambah</button>
+        <span id="galat-minat" class="galat"></span>
+      </form>
+    </section>
+
+    <section>
+      <h2>Keahlian</h2>
+      <div class="grid-kartu">
+        <article class="kartu">
+          <h3>HTML</h3>
+          <p>Struktur dan semantik halaman.</p>
+        </article>
+        <article class="kartu">
+          <h3>CSS</h3>
+          <p>Tampilan dan tata letak responsif.</p>
+        </article>
+        <article class="kartu">
+          <h3>JavaScript</h3>
+          <p>Interaksi pada halaman.</p>
+        </article>
+        <article class="kartu">
+          <h3>PHP</h3>
+          <p>Pemrograman sisi server.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Target Semester Ini</h2>
+      <ol>
+        <li>Menguasai HTML dan CSS</li>
+        <li>Membuat aplikasi PHP sederhana</li>
+        <li>Membangun proyek Laravel</li>
+      </ol>
+    </section>
+
+    <aside>
+      <h2>Tautan</h2>
+      <p>
+        <a href="jadwal.html">Lihat jadwal kuliah</a> |
+        <a href="nilai.html">Hitung nilai akhir</a> |
+        <a href="kontak.html">Hubungi saya</a> |
+        <a href="tailwind.html">Kartu profil Tailwind</a> |
+        <a href="https://developer.mozilla.org" target="_blank" rel="noopener">MDN Web Docs</a>
+      </p>
+    </aside>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Ani Lestari</p>
+  </footer>
+
+</body>
+</html>

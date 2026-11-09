@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Alpine.js</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+  <script src="js/alpine-demo.js" defer></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1>Demo Alpine.js</h1>
+    <nav>
+      <a href="index.html">Beranda</a>
+      <a href="jadwal.html">Jadwal</a>
+      <a href="nilai.html">Nilai</a>
+      <a href="es6.html">ES6</a>
+      <a href="proyek.html">Proyek</a>
+      <a href="pengguna.html">Pengguna</a>
+      <a href="alpine.html" aria-current="page">Alpine</a>
+      <a href="kontak.html">Kontak</a>
+    </nav>
+    <button id="tombol-tema" type="button">Mode gelap</button>
+  </header>
+
+  <main>
+    <section>
+      <h2>1. Penghitung</h2>
+      <div x-data="{ hitung: 0 }" x-cloak>
+        <button type="button" @click="hitung--">&minus;</button>
+        <strong x-text="hitung"></strong>
+        <button type="button" @click="hitung++">+</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. Tab</h2>
+      <div x-data="{ tab: 'html' }" x-cloak>
+        <div class="filter">
+          <button type="button" :class="{ aktif: tab === 'html' }" @click="tab = 'html'">HTML</button>
+          <button type="button" :class="{ aktif: tab === 'css' }" @click="tab = 'css'">CSS</button>
+          <button type="button" :class="{ aktif: tab === 'js' }" @click="tab = 'js'">JavaScript</button>
+        </div>
+        <p x-show="tab === 'html'">HTML menyusun struktur dan makna konten halaman.</p>
+        <p x-show="tab === 'css'">CSS mengatur tampilan dan tata letak.</p>
+        <p x-show="tab === 'js'">JavaScript mengatur perilaku dan interaksi.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>3. Daftar Tugas</h2>
+      <div x-data="daftarTugas" x-cloak>
+        <form @submit.prevent="tambah()">
+          <label for="tugas-baru">Tugas baru</label>
+          <input type="text" id="tugas-baru" x-model="baru">
+          <button type="submit">Tambah</button>
+        </form>
+        <ul>
+          <template x-for="(t, i) in tugas" :key="i">
+            <li>
+              <span x-text="t"></span>
+              <button type="button" class="hapus" @click="hapus(i)">Hapus</button>
+            </li>
+          </template>
+        </ul>
+        <p x-show="tugas.length === 0">Belum ada tugas.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>4. Data dari API</h2>
+      <div x-data="daftarPengguna" x-init="muat()" x-cloak>
+        <p>
+          <label for="cari-alpine">Cari nama</label><br>
+          <input type="search" id="cari-alpine" x-model="cari">
+        </p>
+        <p x-show="memuat" class="status">Memuat data...</p>
+        <p x-show="galat" class="status error" x-text="'Gagal memuat data: ' + galat"></p>
+        <ul>
+          <template x-for="p in terfilter" :key="p.id">
+            <li><span x-text="p.name"></span> (<span x-text="p.email"></span>)</li>
+          </template>
+        </ul>
+        <p class="status" x-show="!memuat && !galat">
+          <span x-text="terfilter.length"></span> dari <span x-text="pengguna.length"></span> pengguna.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Ani Lestari</p>
+  </footer>
+
+</body>
+</html>

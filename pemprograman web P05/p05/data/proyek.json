@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "judul": "Situs Profil Mahasiswa",
+    "kategori": "Web",
+    "tahun": 2026,
+    "teknologi": ["HTML", "CSS", "JavaScript"],
+    "deskripsi": "Situs profil pribadi dengan jadwal kuliah dan kalkulator nilai."
+  },
+  {
+    "id": 2,
+    "judul": "Aplikasi Presensi Kegiatan",
+    "kategori": "Web",
+    "tahun": 2026,
+    "teknologi": ["PHP", "MySQL"],
+    "deskripsi": "Pencatatan kehadiran peserta kegiatan kampus."
+  },
+  {
+    "id": 3,
+    "judul": "Peta Fasilitas Kampus",
+    "kategori": "SIG",
+    "tahun": 2025,
+    "teknologi": ["Leaflet", "GeoJSON"],
+    "deskripsi": "Peta interaktif lokasi gedung, laboratorium, dan fasilitas umum."
+  },
+  {
+    "id": 4,
+    "judul": "Pemantau Tandon Air",
+    "kategori": "IoT",
+    "tahun": 2025,
+    "teknologi": ["NodeMCU", "MQTT"],
+    "deskripsi": "Memantau ketinggian air dan mengendalikan pompa dari jarak jauh."
+  },
+  {
+    "id": 5,
+    "judul": "Katalog Buku Perpustakaan",
+    "kategori": "Web",
+    "tahun": 2025,
+    "teknologi": ["Laravel", "MySQL"],
+    "deskripsi": "Pencarian dan pengelolaan koleksi buku perpustakaan."
+  },
+  {
+    "id": 6,
+    "judul": "Pengingat Jadwal Kuliah",
+    "kategori": "Mobile",
+    "tahun": 2024,
+    "teknologi": ["Flutter"],
+    "deskripsi": "Aplikasi seluler yang mengingatkan jadwal kuliah harian."
+  }
+]

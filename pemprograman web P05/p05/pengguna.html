@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengguna</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+  <script src="js/pengguna.js" defer></script>
+</head>
+<body>
+
+  <header>
+    <h1>Data dari API Publik</h1>
+    <nav>
+      <a href="index.html">Beranda</a>
+      <a href="jadwal.html">Jadwal</a>
+      <a href="nilai.html">Nilai</a>
+      <a href="es6.html">ES6</a>
+      <a href="proyek.html">Proyek</a>
+      <a href="pengguna.html" aria-current="page">Pengguna</a>
+      <a href="alpine.html">Alpine</a>
+      <a href="kontak.html">Kontak</a>
+    </nav>
+    <button id="tombol-tema" type="button">Mode gelap</button>
+  </header>
+
+  <main>
+    <section>
+      <h2>Daftar Pengguna (GET)</h2>
+      <p>Data contoh dari <code>jsonplaceholder.typicode.com</code> (butuh koneksi internet).</p>
+      <p>
+        <label for="cari-pengguna">Cari nama atau surel</label><br>
+        <input type="search" id="cari-pengguna" placeholder="Ketik nama atau surel">
+      </p>
+      <p id="status-pengguna" class="status" aria-live="polite">Memuat data pengguna...</p>
+      <div class="tabel-gulir">
+        <table>
+          <caption>Pengguna dari API</caption>
+          <thead>
+            <tr>
+              <th scope="col">Nama</th>
+              <th scope="col">Surel</th>
+              <th scope="col">Kota</th>
+              <th scope="col">Perusahaan</th>
+            </tr>
+          </thead>
+          <tbody id="isi-pengguna"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Kirim Komentar (POST)</h2>
+      <form id="form-komentar" novalidate>
+        <p>
+          <label for="judul-komentar">Judul</label><br>
+          <input type="text" id="judul-komentar">
+          <span id="galat-judul" class="galat"></span>
+        </p>
+        <p>
+          <label for="isi-komentar">Isi komentar</label><br>
+          <textarea id="isi-komentar" rows="4" cols="40"></textarea>
+          <span id="galat-isi" class="galat"></span>
+        </p>
+        <button type="submit">Kirim</button>
+      </form>
+      <p id="hasil-kirim" class="status" aria-live="polite"></p>
+      <pre id="balasan" class="keluaran"></pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Ani Lestari</p>
+  </footer>
+
+</body>
+</html>

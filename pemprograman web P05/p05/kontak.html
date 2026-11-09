@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontak</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+
+  <header>
+    <h1>Hubungi Saya</h1>
+    <nav>
+      <a href="index.html">Beranda</a>
+      <a href="jadwal.html">Jadwal</a>
+      <a href="nilai.html">Nilai</a>
+      <a href="es6.html">ES6</a>
+      <a href="proyek.html">Proyek</a>
+      <a href="pengguna.html">Pengguna</a>
+      <a href="alpine.html">Alpine</a>
+      <a href="kontak.html" aria-current="page">Kontak</a>
+    </nav>
+    <button id="tombol-tema" type="button">Mode gelap</button>
+  </header>
+
+  <main>
+    <section>
+      <h2>Kirim Pesan</h2>
+      <form action="terima.php" method="post" novalidate>
+        <p>
+          <label for="nama">Nama lengkap</label><br>
+          <input type="text" id="nama" name="nama" required>
+          <span id="galat-nama" class="galat"></span>
+        </p>
+        <p>
+          <label for="email">Surel</label><br>
+          <input type="email" id="email" name="email" required>
+          <span id="galat-email" class="galat"></span>
+        </p>
+        <p>
+          <label for="tgl">Tanggal lahir</label><br>
+          <input type="date" id="tgl" name="tgl">
+        </p>
+        <fieldset>
+          <legend>Jenis pesan</legend>
+          <label><input type="radio" name="jenis" value="saran"> Saran</label>
+          <label><input type="radio" name="jenis" value="tanya"> Pertanyaan</label>
+        </fieldset>
+        <p>
+          <label for="prodi">Program studi</label><br>
+          <select id="prodi" name="prodi">
+            <option value="si">Sistem Informasi</option>
+            <option value="ti">Teknik Informatika</option>
+          </select>
+        </p>
+        <p>
+          <label for="pesan">Pesan</label><br>
+          <textarea id="pesan" name="pesan" rows="4" cols="40" maxlength="200"></textarea>
+          <small id="hitung">0 / 200</small>
+          <span id="galat-pesan" class="galat"></span>
+        </p>
+        <p>
+          <label><input type="checkbox" name="setuju" value="ya" required> Saya menyetujui pengiriman data</label>
+          <span id="galat-setuju" class="galat"></span>
+        </p>
+        <button type="submit">Kirim</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Ani Lestari</p>
+  </footer>
+
+</body>
+</html>

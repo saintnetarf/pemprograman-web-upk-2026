@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyek</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+  <script src="js/proyek.js" defer></script>
+</head>
+<body>
+
+  <header>
+    <h1>Daftar Proyek</h1>
+    <nav>
+      <a href="index.html">Beranda</a>
+      <a href="jadwal.html">Jadwal</a>
+      <a href="nilai.html">Nilai</a>
+      <a href="es6.html">ES6</a>
+      <a href="proyek.html" aria-current="page">Proyek</a>
+      <a href="pengguna.html">Pengguna</a>
+      <a href="alpine.html">Alpine</a>
+      <a href="kontak.html">Kontak</a>
+    </nav>
+    <button id="tombol-tema" type="button">Mode gelap</button>
+  </header>
+
+  <main>
+    <section>
+      <h2>Proyek Saya</h2>
+      <p>Data dimuat dari berkas <code>data/proyek.json</code> menggunakan <code>fetch</code>.</p>
+      <div id="filter" class="filter" aria-label="Filter kategori"></div>
+      <p>
+        <label for="cari">Cari proyek</label><br>
+        <input type="search" id="cari" placeholder="Ketik judul atau kata kunci">
+      </p>
+      <p id="status" class="status" aria-live="polite">Memuat data...</p>
+      <div id="daftar-proyek" class="grid-kartu"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Ani Lestari</p>
+  </footer>
+
+</body>
+</html>
