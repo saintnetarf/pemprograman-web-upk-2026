@@ -5,6 +5,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\PetaController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\SiswaExportController;
+use App\Http\Controllers\SiswaImportController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,15 +25,26 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/profil', [SiswaController::class, 'profil'])->middleware('role:siswa')->name('profil');
 
+    // Ekspor daftar PDF
+    Route::get('/ekspor/siswa/pdf', [SiswaExportController::class, 'daftar'])->name('siswa.ekspor.daftar');
+
+    // Import Excel & Kelola Kelas (khusus sekolah)
+    Route::middleware('role:sekolah')->group(function () {
+        Route::get('/siswa/import', [SiswaImportController::class, 'create'])->name('siswa.import.create');
+        Route::post('/siswa/import', [SiswaImportController::class, 'store'])->name('siswa.import.store');
+        Route::get('/siswa/import/template', [SiswaImportController::class, 'template'])->name('siswa.import.template');
+
+        Route::resource('kelas', KelasController::class)
+            ->parameters(['kelas' => 'kelas'])
+            ->except('show');
+    });
+
+    // Ekspor biodata PDF
+    Route::get('/siswa/{siswa}/pdf', [SiswaExportController::class, 'biodata'])->name('siswa.ekspor.biodata');
+
     Route::resource('siswa', SiswaController::class)->except('show');
 
     Route::middleware('role:admin')->group(function () {
         Route::resource('users', UserController::class)->except('show');
-    });
-
-    Route::middleware('role:sekolah')->group(function () {
-        Route::resource('kelas', KelasController::class)
-            ->parameters(['kelas' => 'kelas'])
-            ->except('show');
     });
 });

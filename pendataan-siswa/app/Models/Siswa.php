@@ -81,4 +81,25 @@ class Siswa extends Model
             default => $query->whereRaw('1 = 0'), // admin: tidak melihat data siswa
         };
     }
+
+    public function scopeBerKoordinat(Builder $query): Builder
+    {
+        return $query->whereNotNull('latitude')->whereNotNull('longitude');
+    }
+
+    public function scopeCari(Builder $query, ?string $q): Builder
+    {
+        return $query->when($q, function ($query) use ($q) {
+            $query->where(function ($w) use ($q) {
+                $w->where('nama_lengkap', 'like', "%{$q}%")
+                  ->orWhere('nik', 'like', "%{$q}%")
+                  ->orWhere('kecamatan', 'like', "%{$q}%");
+            });
+        });
+    }
+
+    public function scopeDiKelas(Builder $query, $kelasId): Builder
+    {
+        return $query->when($kelasId, fn ($q) => $q->where('kelas_id', $kelasId));
+    }
 }

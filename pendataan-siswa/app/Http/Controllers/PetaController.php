@@ -14,9 +14,11 @@ class PetaController extends Controller
     {
         Gate::authorize('viewAny', Siswa::class);
 
-        $total = Siswa::dapatDilihat($request->user())->count();
+        $dilihat = Siswa::dapatDilihat($request->user());
+        $total = (clone $dilihat)->berKoordinat()->count();
+        $tanpaTitik = (clone $dilihat)->whereNull('latitude')->count();
 
-        return view('peta.index', compact('total'));
+        return view('peta.index', compact('total', 'tanpaTitik'));
     }
 
     public function data(Request $request): JsonResponse
@@ -26,6 +28,7 @@ class PetaController extends Controller
         $user = $request->user();
 
         $features = Siswa::dapatDilihat($user)
+            ->berKoordinat()
             ->with('kelas:id,nama')
             ->get()
             ->map(fn ($s) => [

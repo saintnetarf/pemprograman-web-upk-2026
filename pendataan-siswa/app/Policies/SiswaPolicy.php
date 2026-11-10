@@ -33,6 +33,16 @@ class SiswaPolicy
         return $user->hasRole(Role::Sekolah);
     }
 
+    public function import(User $user): bool
+    {
+        return $user->hasRole(Role::Sekolah);
+    }
+
+    public function export(User $user): bool
+    {
+        return $user->hasRole(Role::Sekolah, Role::WaliKelas);
+    }
+
     private function kelola(User $user, Siswa $siswa): bool
     {
         return match ($user->role) {

@@ -11,6 +11,9 @@
     <h1 class="text-2xl font-semibold">Peta Sebaran Tempat Tinggal Siswa</h1>
     <p class="text-slate-600">
         Menampilkan <strong>{{ $total }}</strong> siswa sesuai hak akses Anda. Klik marker untuk melihat detail.
+        @if ($tanpaTitik > 0)
+            <span class="text-amber-600 font-medium">{{ $tanpaTitik }} siswa belum memiliki titik koordinat.</span>
+        @endif
     </p>
 </div>
 

@@ -34,6 +34,7 @@
 
                     @if ($user->hasRole(Role::Sekolah))
                         <a href="{{ route('kelas.index') }}" class="hover:text-blue-600">Kelas</a>
+                        <a href="{{ route('siswa.import.create') }}" class="hover:text-blue-600">Import Siswa</a>
                     @endif
 
                     @if ($user->hasRole(Role::Admin))

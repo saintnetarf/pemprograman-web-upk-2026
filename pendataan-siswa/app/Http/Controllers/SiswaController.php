@@ -19,22 +19,30 @@ class SiswaController extends Controller
         Gate::authorize('viewAny', Siswa::class);
 
         $q = $request->query('q');
+        $kelasId = $request->query('kelas');
+        $user = $request->user();
 
         $siswas = Siswa::query()
-            ->dapatDilihat($request->user())
+            ->dapatDilihat($user)
             ->with('kelas')
-            ->when($q, function ($query) use ($q) {
-                $query->where(function ($w) use ($q) {
-                    $w->where('nama_lengkap', 'like', "%{$q}%")
-                      ->orWhere('nik', 'like', "%{$q}%")
-                      ->orWhere('kecamatan', 'like', "%{$q}%");
-                });
-            })
+            ->cari($q)
+            ->diKelas($kelasId)
             ->orderBy('nama_lengkap')
             ->paginate(10)
             ->withQueryString();
 
-        return view('siswa.index', compact('siswas', 'q'));
+        $pilihanKelas = $this->pilihanKelas($user);
+
+        return view('siswa.index', compact('siswas', 'q', 'kelasId', 'pilihanKelas'));
+    }
+
+    private function pilihanKelas(User $user): \Illuminate\Support\Collection
+    {
+        return match ($user->role) {
+            Role::Sekolah => Kelas::orderBy('nama')->pluck('nama', 'id'),
+            Role::WaliKelas => $user->kelasDiampu()->orderBy('nama')->pluck('nama', 'id'),
+            default => collect(),
+        };
     }
 
     public function create(): View
