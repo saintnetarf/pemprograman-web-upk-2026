@@ -81,6 +81,35 @@
     </div>
 </fieldset>
 
+@if (auth()->user()?->hasRole(\App\Enums\Role::Sekolah))
+    <fieldset class="rounded border p-4">
+        <legend class="px-2 font-medium">Kelas dan Penautan Akun</legend>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+            <x-form-select-relasi
+                name="kelas_id"
+                label="Kelas"
+                :options="$daftarKelas"
+                :value="$siswa->kelas_id"
+                placeholder="-- Pilih Kelas --"
+            />
+            <x-form-select-relasi
+                name="user_id"
+                label="Akun Siswa"
+                :options="$akunSiswa"
+                :value="$siswa->user_id"
+                placeholder="-- Pilih Akun Siswa --"
+            />
+            <x-form-select-relasi
+                name="orang_tua_id"
+                label="Akun Orang Tua"
+                :options="$akunOrtu"
+                :value="$siswa->orang_tua_id"
+                placeholder="-- Pilih Akun Orang Tua --"
+            />
+        </div>
+    </fieldset>
+@endif
+
 <div class="flex gap-3">
     <button type="submit"
             class="rounded bg-blue-600 px-5 py-2 text-white hover:bg-blue-700">Simpan</button>

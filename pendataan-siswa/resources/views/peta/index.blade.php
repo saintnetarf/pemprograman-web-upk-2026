@@ -10,7 +10,7 @@
 <div class="mb-4">
     <h1 class="text-2xl font-semibold">Peta Sebaran Tempat Tinggal Siswa</h1>
     <p class="text-slate-600">
-        Total <strong>{{ $total }}</strong> siswa terdata. Klik marker untuk melihat detail.
+        Menampilkan <strong>{{ $total }}</strong> siswa sesuai hak akses Anda. Klik marker untuk melihat detail.
     </p>
 </div>
 
@@ -21,8 +21,8 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Mencegah teks dari database dibaca sebagai HTML (XSS)
-            const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({
+            // Mencegah teks dari database dibaca sebagai HTML (anti XSS)
+            const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({
                 '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
             }[c]));
 
@@ -34,7 +34,11 @@
             }).addTo(map);
 
             // 2. Mengambil data GeoJSON dari backend
-            fetch("{{ route('peta.data') }}")
+            fetch("{{ route('peta.data') }}", {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
                 .then((res) => {
                     if (!res.ok) {
                         throw new Error(`Gagal mengambil data peta (${res.status})`);
@@ -57,12 +61,16 @@
                     const layer = L.geoJSON({ ...geojson, features }, {
                         onEachFeature: (feature, marker) => {
                             const p = feature.properties;
+                            const editHtml = p.edit_url
+                                ? `<br><a href="${esc(p.edit_url)}" class="text-blue-600 underline">Ubah data</a>`
+                                : '';
+
                             marker.bindPopup(`
-                                <strong>${esc(p.nama)}</strong><br>
+                                <strong>${esc(p.nama)}</strong> (${esc(p.kelas)})<br>
                                 Kel. ${esc(p.kelurahan)}, Kec. ${esc(p.kecamatan)}<br>
                                 Jarak ke sekolah: ${esc(p.jarak)}<br>
                                 Transportasi: ${esc(p.transportasi)}<br>
-                                Waktu tempuh: ${esc(p.waktu_tempuh)}
+                                Waktu tempuh: ${esc(p.waktu_tempuh)}${editHtml}
                             `);
                         }
                     }).addTo(map);
@@ -79,4 +87,3 @@
         });
     </script>
 @endpush
-

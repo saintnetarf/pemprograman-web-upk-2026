@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use App\Enums\Role;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Siswa extends Model
 {
@@ -32,6 +35,7 @@ class Siswa extends Model
     ];
 
     protected $fillable = [
+        'kelas_id', 'user_id', 'orang_tua_id',
         'nik', 'nama_lengkap', 'status_dalam_keluarga', 'anak_ke',
         'jumlah_saudara', 'pernah_tk', 'pernah_paud', 'hobi', 'cita_cita',
         'no_hp', 'alamat', 'kabupaten_kota', 'kecamatan', 'kelurahan',
@@ -47,5 +51,34 @@ class Siswa extends Model
             'latitude' => 'float',
             'longitude' => 'float',
         ];
+    }
+
+    public function kelas(): BelongsTo
+    {
+        return $this->belongsTo(Kelas::class, 'kelas_id');
+    }
+
+    public function akun(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function orangTua(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'orang_tua_id');
+    }
+
+    public function scopeDapatDilihat(Builder $query, User $user): Builder
+    {
+        return match ($user->role) {
+            Role::Sekolah => $query,
+            Role::WaliKelas => $query->whereIn(
+                'kelas_id',
+                Kelas::query()->where('wali_kelas_id', $user->id)->select('id')
+            ),
+            Role::OrangTua => $query->where('orang_tua_id', $user->id),
+            Role::Siswa => $query->where('user_id', $user->id),
+            default => $query->whereRaw('1 = 0'), // admin: tidak melihat data siswa
+        };
     }
 }
